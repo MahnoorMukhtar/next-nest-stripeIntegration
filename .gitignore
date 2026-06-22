@@ -1,0 +1,12 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Just in case any .env slips outside client/server
+.env
+.env.local
+.env.*.local
