@@ -1,0 +1,17 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type PaymentType {
+  _id: ID!
+  courseId: String!
+  userId: String!
+  sessionId: String!
+  paymentIntentId: String!
+  amount: Float!
+  status: String!
+}
+
+type Query {
+  payments: [PaymentType!]!
+}

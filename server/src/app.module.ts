@@ -5,11 +5,22 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { StripeModule } from './stripe/stripe.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PaymentsModule } from './payments/payments.module';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { join } from 'path';
+import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true// makes env vars available everywhere without re-importing
+    }),
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      playground: false,
+      csrfPrevention: false,
+      plugins: [ApolloServerPluginLandingPageLocalDefault()]
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],

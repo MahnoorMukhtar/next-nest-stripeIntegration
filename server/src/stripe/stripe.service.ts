@@ -17,7 +17,6 @@ export class StripeService {
     private paymentsService: PaymentsService,
   ) {
     const stripeKey = this.configService.get<string>('STRIPE_KEY');
-    console.log('STRIPE_KEY:', stripeKey);
 
     if (!stripeKey) {
       throw new Error('STRIPE_KEY is not defined in environment variables');
